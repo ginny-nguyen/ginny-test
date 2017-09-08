@@ -1,0 +1,7 @@
+create table poi_mali_dedup as
+(
+     select g.poi_id, g.poi_name, apd.house_number, apd.street_address_1, apd.city
+     from group_active_2 g inner join acq_poi_dedup apd using(poi_name)
+     where g.poi_name = apd.poi_name
+          and g.house_number = apd.house_number
+          and g.street_address_1 = apd.street_address_1);
